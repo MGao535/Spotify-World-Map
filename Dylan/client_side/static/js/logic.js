@@ -42,6 +42,9 @@ d3.csv("/static/js/LatLong.txt", function(data) {
 		var uri = event.layer.playlist
 		console.log(uri);
 		fetch('/playlist', {
+			headers: {
+				'Content-Type': 'application/json'
+			  },
 			method: 'POST',
 			body: JSON.stringify({
 				'URI': uri
