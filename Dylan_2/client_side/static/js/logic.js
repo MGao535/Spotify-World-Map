@@ -41,12 +41,12 @@ d3.csv("/static/js/LatLong.txt", function(data) {
 	function groupClick(event) {
 		var uri = event.layer.playlist;
 		console.log(uri);
-		var myData = JSON.parse('data.json');
-		console.log(myData);
+		var embed_play = document.getElementById('playlist');
+		var iframe = document.createElement('iframe');
+		iframe.src = "https://open.spotify.com/embed/playlist/" + uri;
+		embed_play.appendChild(iframe);
 	}
 });
 
-d3.json("/static/js/data.json"), function(data) {
-	console.log(data);
-};
+
 console.log("hello")
