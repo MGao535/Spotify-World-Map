@@ -41,12 +41,21 @@ d3.csv("/static/js/LatLong.txt", function(data) {
 	function groupClick(event) {
 		var uri = event.layer.playlist;
 		console.log(uri);
-		
+		d3.json("/static/js/data.json", function(error, data){
+			// console.log(data);
+			topsongs = data;
+			for (var play_list in topsongs){
+				if (uri == play_list){
+					console.log(topsongs[play_list]);
+				}
+			}
+
+		});
 	}
 });
 
-d3.json("/static/js/data.json", function(error, data){
-	console.log(data);
-	topsongs = data;
-	console.log(topsongs);
-});
+// d3.json("/static/js/data.json", function(error, data){
+// 	console.log(data);
+// 	topsongs = data;
+// 	console.log(Object.keys(data));
+// });
