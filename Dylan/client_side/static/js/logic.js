@@ -39,7 +39,15 @@ d3.csv("/static/js/LatLong.txt", function(data) {
 	};
 
 	function groupClick(event) {
-  		console.log(event.layer.playlist);
+		var uri = event.layer.playlist
+		console.log(uri);
+		fetch('/playlist', {
+			method: 'POST',
+			body: JSON.stringify({
+				'URI': uri
+			})
+		}).then(res=>res.json())
+		.then(res => console.log(res));
 	}
 });
 
