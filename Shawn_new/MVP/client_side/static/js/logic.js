@@ -1,4 +1,3 @@
-
 // Creating map object
 var myMap = L.map("map", {
 	center: [30, -10],
@@ -35,7 +34,7 @@ d3.csv("/static/js/LatLong.txt", function(data) {
 		latlng = L.latLng(lats[j], longs[j]);
 		playlist = country_uri[j];
 		marker = L.marker(latlng).addTo(myFeatureGroup)
-		.bindPopup("<a href = #section2 >" + country[j] + "</a>");
+		.bindPopup("<a id='scroll' href = #section2 onclick='scroll_element()'>" + country[j] + "</a>");
 		marker.playlist = playlist;
 	};
 
@@ -107,7 +106,35 @@ d3.csv("/static/js/LatLong.txt", function(data) {
 						options: {
 							title: {
 							display: true,
-							text: 'Top Song Number 2'
+							text: 'Number 2 Song'
+						}}
+					});
+
+					// song3 
+
+					var song3 = document.getElementById('song3');
+
+					var song3_chart = new Chart(song3, {
+						type: 'polarArea',
+						data:{
+							labels:['Danceability','Energy','Valence','Acousticeness','Instrumentalness','Liveness','Speechiness'],
+							datasets:[{
+								data:[topsongs[play_list][2]['danceability'],topsongs[play_list][2]['energy'],topsongs[play_list][2]['valence'],topsongs[play_list][2]['acousticness'],topsongs[play_list][2]['instrumentalness'],topsongs[play_list][2]['liveness'],topsongs[play_list][2]['speechiness']],
+								backgroundColor: [
+									"rgba(45, 227, 240, 0.5)",
+									"rgba(60, 227, 188 0.5)",
+									"rgba(75, 227, 126, 0.5)",
+									"rgba(90, 227, 84, 0.5)",
+									"rgba(161, 212, 242, 0.5)",
+									"rgba(73, 59, 227, 0.5)",
+									"rgba(59, 168, 227, 0.5)"
+								  ]
+							}]
+						},
+						options: {
+							title: {
+							display: true,
+							text: 'Number 3 Song'
 						}}
 					});
 				}
@@ -117,6 +144,41 @@ d3.csv("/static/js/LatLong.txt", function(data) {
 	}
 });
 
+
+
+
+var song1 = document.getElementById('song1')
+var song2 = document.getElementById('song2')
+var song3 = document.getElementById('song3')
+function optionChanged(songNo) { 
+	if (songNo === 'song1') {
+		song1.style.height = "auto";
+		song2.style.height = "0px";
+		song3.style.height = "0px";
+	  } 
+	else if (songNo === 'song2'){
+		song1.style.height = "0px";
+		song2.style.height = "auto";
+		song2.style.display = "block";
+		song3.style.height = "0px";
+	  }
+	else {
+		song1.style.height = "0px";
+		song2.style.height = "0px";
+		song3.style.height = "auto";
+		song3.style.display = "block";
+	}
+	console.log(songNo)
+}
+
+function scroll_element() {
+	song1.style.display = "block";
+	song2.style.display = "none";
+	song3.style.display = "none";
+	var dropDown = document.getElementById("selSong");
+    dropDown.selectedIndex = 'song1';
+	console.log('block');
+}
 
 d3.json("/static/js/data.json", function(error, data){
 	console.log(data);
@@ -154,7 +216,7 @@ d3.json("/static/js/data.json", function(error, data){
 		}
 	  };
 	  var layout = {
-		title: 'Danceability In Number #1 Song In Every Country',
+		title: 'Danceability In Number #1 Song From Every Country',
 		xaxis: {
 		  	title: 'Danceability in Song',
 		},
@@ -177,7 +239,7 @@ d3.json("/static/js/data.json", function(error, data){
 		}
 	  };
 	  var layout2 = {
-		title: 'Energy In Number #1 Song In Every Country',
+		title: 'Energy In Number #1 Song From Every Country',
 		xaxis: {
 		  	title: 'Energy in Song',
 		},
@@ -191,4 +253,3 @@ d3.json("/static/js/data.json", function(error, data){
 
 
 });
-
