@@ -51,7 +51,7 @@
       <h2>Section 2</h2>
     </div>
     <div class="row">
-      <a href="#section1">Click Me to Smooth Scroll to Section 1 Above</a>
+      <a id="scroll" href="#section1" onclick="scroll_element()">Click Me to Smooth Scroll to Section 1 Above</a>
     </div>
     <div class="row">
       <div class="col-md-6">
@@ -61,15 +61,14 @@
       </div>
       <div class="col-md-6 ">
         <canvas id="song1" style="height: 1px; width: auto;"></canvas>
-        <canvas id="song2" style="height:1px; width: auto;"></canvas>
-        <canvas id="song3" style="height: 1px; width: auto;"></canvas>
+        <canvas id="song2" style="height:1px; width: auto; display: none;"></canvas>
+        <canvas id="song3" style="height: 1px; width: auto; display: none;"></canvas>
       </div>
     </div>
     <div class="row justify-content-end">
       <div class="col-5">
         <label for="selSong">Song No:</label>
         <select id="selSong" onchange="optionChanged(this.value)">
-          <option value="all">Top 3</option>
           <option value="song1">1</option>
           <option value="song2">2</option>
           <option value="song3">3</option>

@@ -142,19 +142,19 @@ var song3 = document.getElementById('song3')
 function optionChanged(songNo) { 
 	
 	if (songNo === 'song1') {
-		song1.style.height = "100%";
+		song1.style.height = "100";
 		song2.style.height = "0";
 		song3.style.height = "0";
 	  } 
 	else if (songNo === 'song2'){
 		song1.style.height = "0";
-		song2.style.height = "100%";
+		song2.style.height = "100";
 		song3.style.height = "0";
 	  }
 	else {
 		song1.style.height = "0";
 		song2.style.height = "0";
-		song3.style.height = "100%";
+		song3.style.height = "100";
 	}
 	console.log(songNo)
 }

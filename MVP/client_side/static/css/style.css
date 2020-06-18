@@ -1,0 +1,24 @@
+body {
+  padding: 0;
+  margin: 0;
+}
+
+.remove-all-margin{
+  margin:0 ! important;
+  }
+
+#map,
+body,
+html {
+  height: 100%;
+}
+
+#section1 {
+  height: 100%;
+}
+
+#section2 {
+  height: 100%;
+  
+}
+
