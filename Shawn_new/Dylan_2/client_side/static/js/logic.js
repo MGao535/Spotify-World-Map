@@ -1,3 +1,4 @@
+
 // Creating map object
 var myMap = L.map("map", {
 	center: [30, -10],
@@ -41,12 +42,74 @@ d3.csv("/static/js/LatLong.txt", function(data) {
 	function groupClick(event) {
 		var uri = event.layer.playlist;
 		console.log(uri);
+		var embed_play = document.getElementById('playlist');
+		var iframe = document.createElement('iframe');
+		iframe.src = "https://open.spotify.com/embed/playlist/" + uri;
+		embed_play.appendChild(iframe);
 		d3.json("/static/js/data.json", function(error, data){
 			// console.log(data);
 			topsongs = data;
 			for (var play_list in topsongs){
 				if (uri == play_list){
 					console.log(topsongs[play_list]);
+					console.log(topsongs[play_list][0]);
+					console.log(topsongs[play_list][0]['danceability']);
+
+					// song1 
+					var song1 = document.getElementById('song1');
+
+					var song1_chart = new Chart(song1, {
+						type: 'polarArea',
+						data:{
+							labels:['Danceability','Energy','Valence','Acousticeness','Instrumentalness','Liveness','Speechiness'],
+							datasets:[{
+								data:[topsongs[play_list][0]['danceability'],topsongs[play_list][0]['energy'],topsongs[play_list][0]['valence'],topsongs[play_list][0]['acousticness'],topsongs[play_list][0]['instrumentalness'],topsongs[play_list][0]['liveness'],topsongs[play_list][0]['speechiness']],
+								backgroundColor: [
+									"rgba(45, 227, 240, 0.5)",
+									"rgba(60, 227, 188 0.5)",
+									"rgba(75, 227, 126, 0.5)",
+									"rgba(90, 227, 84, 0.5)",
+									"rgba(161, 212, 242, 0.5)",
+									"rgba(73, 59, 227, 0.5)",
+									"rgba(59, 168, 227, 0.5)"
+								  ]
+							}]
+						},
+						options: {
+							title: {
+								display: true,
+								text: `Number 1 Song`
+							}
+						}
+					});
+
+					// song2 
+
+					var song2 = document.getElementById('song2');
+
+					var song2_chart = new Chart(song2, {
+						type: 'polarArea',
+						data:{
+							labels:['Danceability','Energy','Valence','Acousticeness','Instrumentalness','Liveness','Speechiness'],
+							datasets:[{
+								data:[topsongs[play_list][1]['danceability'],topsongs[play_list][1]['energy'],topsongs[play_list][1]['valence'],topsongs[play_list][1]['acousticness'],topsongs[play_list][1]['instrumentalness'],topsongs[play_list][1]['liveness'],topsongs[play_list][1]['speechiness']],
+								backgroundColor: [
+									"rgba(45, 227, 240, 0.5)",
+									"rgba(60, 227, 188 0.5)",
+									"rgba(75, 227, 126, 0.5)",
+									"rgba(90, 227, 84, 0.5)",
+									"rgba(161, 212, 242, 0.5)",
+									"rgba(73, 59, 227, 0.5)",
+									"rgba(59, 168, 227, 0.5)"
+								  ]
+							}]
+						},
+						options: {
+							title: {
+							display: true,
+							text: 'Top Song Number 2'
+						}}
+					});
 				}
 			}
 

@@ -3,6 +3,10 @@ body {
   margin: 0;
 }
 
+.remove-all-margin{
+  margin:0 ! important;
+  }
+
 #map,
 body,
 html {
@@ -11,10 +15,10 @@ html {
 
 #section1 {
   height: 100%;
-  background-color: pink;
 }
 
 #section2 {
   height: 100%;
-  background-color: yellow;
+  
 }
+
