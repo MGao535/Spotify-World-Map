@@ -117,8 +117,22 @@ d3.csv("/static/js/LatLong.txt", function(data) {
 	}
 });
 
-// d3.json("/static/js/data.json", function(error, data){
-// 	console.log(data);
-// 	topsongs = data;
-// 	console.log(Object.keys(data));
-// });
+
+d3.json("/static/js/data.json", function(error, data){
+	console.log(data);
+
+	
+	// topsongs = data;
+	// console.log(Object.values(data));
+	var i = 0;
+	var dance = [];
+	for (var play_list in data){
+		// console.log(data[play_list]);
+		// console.log(data[play_list][0]['danceability']);
+		var song_dance = data[play_list][0]['danceability'];
+		dance.push(song_dance);
+		i = i + 1;
+	}
+
+	console.log(dance);
+});
