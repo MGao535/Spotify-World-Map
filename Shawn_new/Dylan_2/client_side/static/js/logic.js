@@ -146,25 +146,14 @@ d3.json("/static/js/data.json", function(error, data){
 	// 		options: {}
 	// 	});
 
-	// var trace = {
-	// 	x: dance,
-	// 	type: 'histogram',
-	//   };
-	// var graph = [trace];
-	// Plotly.newPlot('danceability', graph);
-
-	var trace1 = {
-		x: dance,
-		y: [0,1],
-		mode: 'markers',
-		type: 'scatter'
+	var trace = {
+		x: energy,
+		type: 'histogram',
 	  };
-	  
-	  var graph = [trace1];
-	  
+	var graph = [trace];
+	Plotly.newPlot('danceability', graph);
 
-	  
-	  Plotly.newPlot('danceability', graph);
+	
 
 
 });
