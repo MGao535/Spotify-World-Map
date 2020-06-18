@@ -140,21 +140,31 @@ var song1 = document.getElementById('song1')
 var song2 = document.getElementById('song2')
 var song3 = document.getElementById('song3')
 function optionChanged(songNo) { 
-	
 	if (songNo === 'song1') {
-		song1.style.height = "100";
-		song2.style.height = "0";
-		song3.style.height = "0";
+		song1.style.height = "auto";
+		song2.style.height = "0px";
+		song3.style.height = "0px";
 	  } 
 	else if (songNo === 'song2'){
-		song1.style.height = "0";
-		song2.style.height = "100";
-		song3.style.height = "0";
+		song1.style.height = "0px";
+		song2.style.height = "auto";
+		song2.style.display = "block";
+		song3.style.height = "0px";
 	  }
 	else {
-		song1.style.height = "0";
-		song2.style.height = "0";
-		song3.style.height = "100";
+		song1.style.height = "0px";
+		song2.style.height = "0px";
+		song3.style.height = "auto";
+		song3.style.display = "block";
 	}
 	console.log(songNo)
+}
+
+function scroll_element() {
+	song1.style.display = "block";
+	song2.style.display = "none";
+	song3.style.display = "none";
+	var dropDown = document.getElementById("selSong");
+    dropDown.selectedIndex = 'song1';
+	console.log('block');
 }
