@@ -126,13 +126,45 @@ d3.json("/static/js/data.json", function(error, data){
 	// console.log(Object.values(data));
 	var i = 0;
 	var dance = [];
+	var energy = [];
 	for (var play_list in data){
 		// console.log(data[play_list]);
 		// console.log(data[play_list][0]['danceability']);
 		var song_dance = data[play_list][0]['danceability'];
+		var song_energy = data[play_list][0]['energy'];
+		energy.push(song_energy);
 		dance.push(song_dance);
 		i = i + 1;
 	}
 
 	console.log(dance);
+	// var dance_graph = document.getElementById('danceability');
+
+	// 	var dance_chart = new Chart(dance_graph, {
+	// 		type: 'bubble',
+	// 		data:{},						
+	// 		options: {}
+	// 	});
+
+	// var trace = {
+	// 	x: dance,
+	// 	type: 'histogram',
+	//   };
+	// var graph = [trace];
+	// Plotly.newPlot('danceability', graph);
+
+	var trace1 = {
+		x: dance,
+		y: [0,1],
+		mode: 'markers',
+		type: 'scatter'
+	  };
+	  
+	  var graph = [trace1];
+	  
+
+	  
+	  Plotly.newPlot('danceability', graph);
+
+
 });
