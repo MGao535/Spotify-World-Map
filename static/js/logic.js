@@ -18,7 +18,7 @@ L.tileLayer(MAP_URL, {
 	accessToken: API_KEY
 }).addTo(myMap);
 
-d3.csv("/static/js/LatLong.txt", function(data) {
+d3.csv("Bootcamp-Visualization-Project/static/js/LatLong.txt", function(data) {
 	console.log(data);
     for(var i = 0; i < data.length; i++){
     	country.push(data[i].Country);
@@ -207,7 +207,7 @@ function scroll_element() {
 	console.log('block');
 }
 
-d3.json("/static/js/data.json", function(error, data){
+d3.json("Bootcamp-Visualization-Project/static/js/data.json", function(error, data){
 	console.log(data);
 
 	
