@@ -18,7 +18,7 @@ L.tileLayer(MAP_URL, {
 	accessToken: API_KEY
 }).addTo(myMap);
 
-d3.csv("/static/js/LatLong.txt", function(data) {
+d3.csv("LatLong.txt", function(data) {
 	console.log(data);
     for(var i = 0; i < data.length; i++){
     	country.push(data[i].Country);
